@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Word of the Day</title>
 
   <style>
@@ -32,7 +33,7 @@
 
     .frog {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      max-height: 55vh;
       object-fit: contain;
       border-radius: 16px;
       display: block;
@@ -58,14 +59,81 @@
 <body>
 
   <div class="widget">
-    <img id="frog" class="frog" src="" alt="Daily frog">
+
+    <img id="frog" class="frog" alt="Daily frog">
 
     <h1>WORD OF THE DAY</h1>
 
     <div id="message" class="message"></div>
+
   </div>
 
+
   <script>
+
+    const frogs = [
+      "00.PNG",
+      "1.PNG",
+      "2.PNG",
+      "3.PNG",
+      "5.PNG",
+      "6.PNG",
+      "67.PNG",
+      "8.PNG",
+      "9.PNG",
+      "Sieppaa.PNG",
+      "dffgdg.PNG",
+      "dfgg.PNG",
+      "dfggd.PNG",
+      "dfhh.PNG",
+      "fdggh.PNG",
+      "fg.PNG",
+      "fgddh.PNG",
+      "fgh.PNG",
+      "fgjjjhj.PNG",
+      "fh.PNG",
+      "fhfdgh.PNG",
+      "fhfg.PNG",
+      "fhfghg.PNG",
+      "fhhh.PNG",
+      "gfdgdgd.PNG",
+      "gfhf.PNG",
+      "gfhfhh.PNG",
+      "gghhfgh.PNG",
+      "ghffhfh.PNG",
+      "ghfggff.PNG",
+      "ghfgh.PNG",
+      "ghfgj.PNG",
+      "ghfgjjj.PNG",
+      "ghfh.PNG",
+      "ghfhffhfh.PNG",
+      "ghfhggfh.PNG",
+      "ghgfghf.PNG",
+      "ghgfhfgh.PNG",
+      "ghhh.PNG",
+      "ghyhfhhg.PNG",
+      "gjgjg.PNG",
+      "gjgjh.PNG",
+      "gjgjhkh.PNG",
+      "gjjjhjj.PNG",
+      "gvhgfjfg.PNG",
+      "hfggh.PNG",
+      "hfghgfhfh.PNG",
+      "hfhhfh.PNG",
+      "hhfgf.PNG",
+      "hjgjhg.PNG",
+      "hjhgkk.PNG",
+      "hjhjghj.PNG",
+      "hjjhkgkh.PNG",
+      "hmgmm.PNG",
+      "j,,,l,hjkk.PNG",
+      "jgjhgj.PNG",
+      "kihkjh.PNG",
+      "reeetrt.PNG",
+      "tfyhfuh.PNG"
+    ];
+
+
     const messages = [
       "kuu kiurusta kesään ja 3,50 kaljasta",
       "And the Lord saw the potato and said, “This will do,” as he waddled back to the toilet.",
@@ -107,11 +175,11 @@
       "“U.S. dollars and a jar of gypsy tears to protect me from AIDS.”"
     ];
 
-    // Change this to match however many frog images we have.
-    const frogCount = 59;
 
-    // Creates a number from today's date.
-    // Everyone gets the same frog/message on the same date.
+    // Use today's date as the seed.
+    // This means the frog and message stay the same
+    // for the entire day.
+
     function getDayNumber() {
       const today = new Date();
 
@@ -124,16 +192,19 @@
       );
     }
 
+
     const dayNumber = getDayNumber();
 
-    const frogIndex = (dayNumber % frogCount) + 1;
+    const frogIndex = dayNumber % frogs.length;
     const messageIndex = dayNumber % messages.length;
 
+
     document.getElementById("frog").src =
-      `frog_${String(frogIndex).padStart(3, "0")}.png`;
+      frogs[frogIndex];
 
     document.getElementById("message").textContent =
       messages[messageIndex];
+
   </script>
 
 </body>
