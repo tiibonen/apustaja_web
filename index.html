@@ -206,6 +206,12 @@
     document.getElementById("message").textContent =
       messages[messageIndex];
 
+</script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
   </script>
 
 </body>
