@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word of the Day</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f4f1e8;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .widget {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .frog {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 16px;
+      display: block;
+      background: #eee;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin: 20px 0 14px;
+    }
+
+    .message {
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.45;
+      padding: 0 8px 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="widget">
+    <img id="frog" class="frog" src="" alt="Daily frog">
+
+    <h1>WORD OF THE DAY</h1>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    const messages = [
+      "kuu kiurusta kesään ja 3,50 kaljasta",
+      "And the Lord saw the potato and said, “This will do,” as he waddled back to the toilet.",
+      "ootko makkara ku haluisin puristaa sinappia siu päälle",
+      "If you put your wallet next to your ear, you can almost hear the juice.",
+      "tårtå på tårtå.",
+      "Jesus forgot the groceries, so you can fuck up too.",
+      "And god created beer, cause reeb wouldn't make any sense.",
+      "lapa jäähän ja nimi lehteen (alibiin)",
+      "oot söpö t. kikki hiiri",
+      "Today, you should probably bring a shovel to the fight. To fight what? The magic midget will show you.",
+      "Miracles do happen, as Jokerit won a game.",
+      "jo on leikki leiväst ja tuska tupakast.",
+      "And on the seventh day Jesus came back from the dead and said, “Mayonnaise.”",
+      "Today's message from our lord and saviour says: trust the fart. It might surprise you. Maybe not in a good way. But it will surprise you.",
+      "Today is a good day to use a croissant. For what? That's up to you to decide.",
+      "ellemme varmuudella tiedä, kuinka tulee käymään, olettakaamme, että kaikki käy hyvin. saatana.",
+      "And God looked upon the mess and realized who was responsible. It was the juice.",
+      "Today you might feel a tingle in your butt. Don't mind it. It's just my finger.",
+      "nälkä siirtyy, ei lähde.",
+      "Röpöttää röpöttää mutta ei voi mitään.",
+      "Sano mummo ku pikkusen liukastu.",
+      "Kyllä mä laitan juuston ensin kun leivän",
+      "Jos en olis heränny olisin vieläki nukkumassa",
+      "Kuvaile itseäsi yhdellä sanalla: reipas",
+      "he protecc, but he also attacc",
+
+      "“You’re gonna need a bigger boat.”",
+      "“I love the smell of napalm in the morning.”",
+      "“We’re not in Kansas anymore.”",
+      "“There’s no place like home.”",
+      "“I’m exercising the right not to walk.”",
+      "“Forget it, Jake. It’s Chinatown.”",
+      "“Can you fly, Bobby?”",
+      "“There’s children throwing snowballs instead of throwing heads.”",
+      "“Although Kazakhstan a glorious country, it have a problem too: economic social and jew.”",
+      "“Is this a cat in a hat?”",
+      "“Even though my anus was broken, I knew the rest of our journey would be great success.”",
+      "“U.S. dollars and a jar of gypsy tears to protect me from AIDS.”"
+    ];
+
+    // Change this to match however many frog images we have.
+    const frogCount = 59;
+
+    // Creates a number from today's date.
+    // Everyone gets the same frog/message on the same date.
+    function getDayNumber() {
+      const today = new Date();
+
+      const year = today.getFullYear();
+      const month = today.getMonth();
+      const day = today.getDate();
+
+      return Math.floor(
+        new Date(year, month, day).getTime() / 86400000
+      );
+    }
+
+    const dayNumber = getDayNumber();
+
+    const frogIndex = (dayNumber % frogCount) + 1;
+    const messageIndex = dayNumber % messages.length;
+
+    document.getElementById("frog").src =
+      `frog_${String(frogIndex).padStart(3, "0")}.png`;
+
+    document.getElementById("message").textContent =
+      messages[messageIndex];
+  </script>
+
+</body>
+</html>
